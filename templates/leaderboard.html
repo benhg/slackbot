@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<style>
+img.emoji {  
+  // Override any img styles to ensure Emojis are displayed inline
+  margin: 0px !important;
+  display: inline !important;
+  visibility: visible;
+  width:32px;
+  height:32px;
+}
+table{border:1px solid black;}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+
+tr:hover {background-color: #d3d3d3}
+
+h1{
+  text-align: center;
+  font-family: sans-serif;
+  font-size:32pt;
+}
+.name,.name-header{
+  width:15em;
+  text-align: center;
+}
+.concern-header,.pride-header{
+  text-align: center;
+}
+.concern{text-align: right;}
+</style>
+<script type="text/javascript">
+ var scores={{scores|tojson}};
+ window.onload = function() {
+
+  // Set the size of the rendered Emojis
+  // This can be set to 16x16, 36x36, or 72x72
+  twemoji.size = '16x16';
+
+  // Parse the document body and
+  // insert <img> tags in place of Unicode Emojis
+  twemoji.parse(document.body);
+  fill()
+
+}
+
+function fill(){
+  for(var student in scores){
+  console.log(student);
+  concern=scores[student].concern;
+  for(var i=0;i<concern;i++){
+    elem=document.createElement('span');
+    num=Math.round(Math.random()*19)+1
+    html='<img class="emoji" draggable="false" alt="☕" src="static/negative_emoji/'+num+'.png">'
+    elem.innerHTML=html
+    str=student+"-concern"
+    elem.style="visibility:visible;width:16px;height:16px;"
+    document.getElementById(str).appendChild(elem);
+    twemoji.parse(document.body);
+}
+pride=scores[student].pride;
+for(var i=0;i<pride;i++){
+    elem=document.createElement('span');
+    num=Math.round(Math.random()*19)+1
+    html='<img class="emoji" draggable="false" alt="☕" src="static/positive_emoji/'+num+'.png">'
+    elem.innerHTML=html
+    str=student+"-pride"
+    elem.style="visibility:visible;width:16px;height:16px;"
+    document.getElementById(str).appendChild(elem);
+    twemoji.parse(document.body);
+}
+}
+}
+ </script>
+ <title>CI Summer Student Leaderboard</title>
+ <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>  
+<body>
+<h1>CI Summer Student Leaderboard</h1>
+<table style="width:100%">
+  <tr>
+    <th class='concern-header'>Wall of Concern</th>
+    <th class="name-header">Name</th> 
+    <th class='pride-header'>Wall of Praise</th>
+  </tr>
+  <tr>
+  	<td class="concern" id="Alex-concern"></td >
+    <td class="name">Alex ({{scores['Alex']['pride']}}++, {{scores['Alex']['concern']}}--, {{scores['Alex']['pride']-scores['Alex']['concern']}}net)</td>
+    <td class="pride" id="Alex-pride"></td >
+  </tr>
+  <tr>
+  	<td class="concern" id="Ben-concern"></td>
+    <td class="name">Ben ({{scores['Ben']['pride']}}++, {{scores['Ben']['concern']}}--, {{scores['Ben']['pride']-scores['Ben']['concern']}}net)</td>
+    <td class="pride" id="Ben-pride"></td >
+  </tr>
+  <tr>
+  	<td class="concern" id="Blue-concern"></td>
+    <td class="name">Blue ({{scores['Blue']['pride']}}++, {{scores['Blue']['concern']}}--, {{scores['Blue']['pride']-scores['Blue']['concern']}}net)</td>
+    <td class="pride" id="Blue-pride"></td>
+   <tr>
+    <td class="concern" id="Emily-concern">
+    <td class="name">Emily ({{scores['Emily']['pride']}}++, {{scores['Emily']['concern']}}--, {{scores['Emily']['pride']-scores['Emily']['concern']}}net)</td>
+    <td class="pride" id="Emily-pride"></td >
+  </tr>
+  <tr>
+   	<td class="concern" id="Justin-concern"></td>
+    <td class="name">Justin ({{scores['Justin']['pride']}}++, {{scores['Justin']['concern']}}--, {{scores['Justin']['pride']-scores['Justin']['concern']}}net)</td>
+    <td class="pride" id="Justin-pride"></td>
+  </tr>
+  <tr>
+   	<td class="concern" id="Kyle-concern"></td>
+    <td class="name">Kyle ({{scores['Kyle']['pride']}}++, {{scores['Kyle']['concern']}}--, {{scores['Kyle']['pride']-scores['Kyle']['concern']}}net)</td>
+    <td class="pride" id="Kyle-pride"></td>
+  </tr>
+  <tr>
+   	<td class="concern" id="Rohan-concern"></td>
+    <td class="name">Rohan ({{scores['Rohan']['pride']}}++, {{scores['Rohan']['concern']}}--, {{scores['Rohan']['pride']-scores['Rohan']['concern']}}net)</td>
+    <td class="pride" id="Rohan-pride"></td>
+  </tr>
+  <tr>
+   	<td class="concern" id="Samarth-concern"></td>
+    <td class="name">Samarth ({{scores['Samarth']['pride']}}++, {{scores['Samarth']['concern']}}--, {{scores['Samarth']['pride']-scores['Samarth']['concern']}}net)</td>
+    <td class="pride"id="Samarth-pride"></td>
+  </tr>
+  <tr>
+   	<td class="concern" id="Thdodore-concern"></td>
+    <td class="name">Theodore ({{scores['Theodore']['pride']}}++, {{scores['Theodore']['concern']}}--, {{scores['Theodore']['pride']-scores['Theodore']['concern']}}net)</td>
+    <td class="pride" id="Theodore-pride"></td>
+  </tr>
+  <tr>
+        <td class="concern" id="Elbert-concern"></td>
+    <td class="name">Elbert ({{scores['Elbert']['pride']}}++, {{scores['Elbert']['concern']}}--, {{scores['Elbert']['pride']-scores['Elbert']['concern']}}net)</td>
+    <td class="pride" id="Elbert-pride"></td>
+  </tr>
+  <tr>
+        <td class="concern" id="Helena-concern"></td>
+    <td class="name">Helena ({{scores['Helena']['pride']}}++, {{scores['Helena']['concern']}}--, {{scores['Helena']['pride']-scores['Helena']['concern']}}net)</td>
+    <td class="pride" id="Helena-pride"></td>
+  </tr>
+  <tr>
+        <td class="concern" id="Monica-concern"></td>
+    <td class="name">Monica ({{scores['Monica']['pride']}}++, {{scores['Monica']['concern']}}--, {{scores['Monica']['pride']-scores['Monica']['concern']}}net)</td>
+    <td class="pride" id="Monica-pride"></td>
+  </tr>
+  <tr>
+        <td class="concern" id="Ashwin-concern"></td>
+    <td class="name">Ashwin ({{scores['Ashwin']['pride']}}++, {{scores['Ashwin']['concern']}}--, {{scores['Ashwin']['pride']-scores['Ashwin']['concern']}}net)</td>
+    <td class="pride" id="Ashwin-pride"></td>
+  </tr>
+  <tr>
+        <td class="concern" id="Giacomo-concern"></td>
+    <td class="name">Giacomo ({{scores['Giacomo']['pride']}}++, {{scores['Giacomo']['concern']}}--, {{scores['Giacomo']['pride']-scores['Giacomo']['concern']}}net)</td>
+    <td class="pride" id="Giacomo-pride"></td>
+  </tr>
+  <tr>
+        <td class="concern" id="Logan-concern"></td>
+    <td class="name">Logan ({{scores['Logan']['pride']}}++, {{scores['Logan']['concern']}}--, {{scores['Logan']['pride']-scores['Logan']['concern']}}net)</td>
+    <td class="pride" id="Giacomo-pride"></td>
+  </tr>
+</table>
+
+</body>
+</html>
+
